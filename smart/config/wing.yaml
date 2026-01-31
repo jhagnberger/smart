@@ -1,0 +1,46 @@
+defaults:
+  - _self_
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+
+hydra:
+  output_subdir: null
+  run:
+    dir: .
+
+wandb:
+  project: "smart"
+  entity: "janha"
+
+experiment:
+  name: "Wing"
+  model_name: "SMART"
+  model_tag: ""
+  random_seed: 42
+
+  # Model configuration
+  architecture:
+    latent_dim: 256
+    latent_geometry_points: 4096
+    subsampled_geometry_points: 8192
+    num_encoder_decoder_blocks: 8
+    pos_scale_factor: 1000
+  optimizer: "lion"
+  loss_fn: "rel_l2"
+  scheduler: "cosine"
+  scheduler_warumup_fraction: 0.2
+  batch_size: 1
+  epochs: 200
+  learning_rate: 5.e-5
+  gradient_norm: 2.0
+  amp: False
+  precision: "float32"
+
+  # Data configuration
+  dataset: "ShiftWing"
+  data_path: "{LOCAL_DIR}/shift-wing/"
+  num_workers: 32
+  num_body_points: 65536
+  num_surface_points: 8192
+  num_volume_points: 8192
+  scale_positions: False

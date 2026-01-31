@@ -1,0 +1,46 @@
+defaults:
+  - _self_
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+
+hydra:
+  output_subdir: null
+  run:
+    dir: .
+
+wandb:
+  project: "smart"
+  entity: "janha"
+
+experiment:
+  name: "Car"
+  model_name: "SMART"
+  model_tag: ""
+  random_seed: 42
+
+  # Model configuration
+  architecture:
+    latent_dim: 128
+    latent_geometry_points: 3682
+    subsampled_geometry_points: 3682
+    num_encoder_decoder_blocks: 6
+    pos_scale_factor: 100
+  optimizer: "lion"
+  loss_fn: "rel_l2"
+  scheduler: "cosine"
+  scheduler_warumup_fraction: 0.2
+  batch_size: 1
+  epochs: 200
+  learning_rate: 1.e-4
+  gradient_norm: null
+  amp: True
+  precision: "float16"
+
+  # Data configuration
+  dataset: "ShapeNetCar"
+  data_path: "{LOCAL_DIR}/shapenetcar/mlcfd_data/training_data/"
+  num_workers: 2
+  num_body_points: 65536
+  num_surface_points: 16384
+  num_volume_points: 16384
+  scale_positions: False
