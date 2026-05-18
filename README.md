@@ -6,6 +6,9 @@
   <a target="_blank" href="https://matlog.net"><strong>Mathias Niepert</strong></a>
 </p>
 
+<p align="center">
+    <a href="https://icml.cc/virtual/2026/poster/66560"><img src="https://img.shields.io/badge/ICML2026%20Conference-Paper-red?style=flat&logoSize=auto&labelColor=darkgreen" alt="ICML2026 Conference Paper"></a>
+</p>
 
 This repository contains the official PyTorch implementation of the SMART model from the paper, "[**SMART: Scalable Mesh-free Aerodynamic Simulations from Raw Geometries using a Transformer-based Surrogate Model**](https://arxiv.org/abs/2601.18707)".
 
